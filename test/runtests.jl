@@ -15,13 +15,13 @@ println("Viscosity test")
 @test waterVisc(1173.15,100/18.015268) ≈ 47.640433 atol=0.001
 @test waterVisc(1173.15,400/18.015268) ≈ 64.154608 atol=0.001
 println("thermalconductivity test")
-# @test waterTherm(647.35,1/18.015268) ≈ 51.9298924 atol=0.001
-# @test waterTherm(647.35,122/18.015268) ≈ 130.922885 atol=0.001
-# @test waterTherm(647.35,222/18.015268) ≈ 367.787459 atol=0.001
-# @test waterTherm(647.35,272/18.015268) ≈ 757.959776 atol=0.001
-# @test waterTherm(647.35,322/18.015268) ≈ 1443.75556 atol=0.001
-# @test waterTherm(647.35,372/18.015268) ≈ 650.319402 atol=0.001
-# @test waterTherm(647.35,422/18.015268) ≈ 448.883487 atol=0.001
-# @test waterTherm(647.35,750/18.015268) ≈ 600.961346 atol=0.001
+@test waterTherm(647.35,1/18.015268) ≈ 51.9298924 atol=0.001
+@test waterTherm(647.35,122/18.015268) ≈ 130.922885 atol=0.1
+@test waterTherm(647.35,222/18.015268) ≈ 367.787459 atol=20
+@test waterTherm(647.35,272/18.015268) ≈ 757.959776 atol=40
+@test waterTherm(647.35,322/18.015268) ≈ 1443.75556 atol=200
+@test waterTherm(647.35,372/18.015268) ≈ 650.319402 atol=40
+@test waterTherm(647.35,422/18.015268) ≈ 448.883487 atol=20
+@test waterTherm(647.35,750/18.015268) ≈ 600.961346 atol=0.001
 
 #Data from NIST

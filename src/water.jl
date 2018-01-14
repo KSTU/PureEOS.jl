@@ -170,7 +170,7 @@ bt=[0.0, 0.0, 0.0, 0.0, 0.0,
 	0.0, 0.0, 0.0, 0.0, 0.0,	#40
 	0.0, 0.0, 0.0, 0.0, 0.0,
 	0.0, 0.0, 0.0, 0.0, 0.0,	#50
-	0.0, 150.0, 150.0, 150.0, 0.3,
+	0.0, 150.0, 150.0, 250.0, 0.3,
 	0.3]
 
 gm=[0.0, 0.0, 0.0, 0.0, 0.0,
@@ -183,7 +183,7 @@ gm=[0.0, 0.0, 0.0, 0.0, 0.0,
 	0.0, 0.0, 0.0, 0.0, 0.0,	#40
 	0.0, 0.0, 0.0, 0.0, 0.0,
 	0.0, 0.0, 0.0, 0.0, 0.0,	#50
-	0.0, 1.21, 1.21, 1.21]
+	0.0, 1.21, 1.21, 1.25]
 
 ep=[0.0, 0.0, 0.0, 0.0, 0.0,
 	0.0, 0.0, 0.0, 0.0, 0.0,	#10
@@ -401,6 +401,21 @@ sub.w=sqrt(R/mm*T*(1+2*delta*phidelta+delta^2*phidelta2-(1+delta*phidelta-delta*
 sub.cv=-tau^2*(phi0tau2+phitau2)*R
 sub.cp=(-tau^2*(phi0tau2+phitau2)+(1+delta*phidelta-delta*tau*dphideltadtau)^2/(1+2*delta*phidelta+delta^2*phidelta2))*R
 sub.dpdt=R/100.0*T*(1.0+2*delta*phidelta+delta^2*phidelta2)
+#debug
+# println("phi0 $(phi0)")
+# println("phi0delta $(phi0delta)")
+# println("phi0delta2 $(phi0delta2)")
+# println("phi0tau $(phi0tau)")
+# println("phi0tau2 $(phi0tau2)")
+# println("phi0taudelta $(phi0taudelta)")
+#
+# println("phir $(phir)")
+# println("phidelta $(phidelta)")
+# println("phidelta2 $(phidelta2)")
+# println("phitau $(phitau)")
+# println("phitau2 $(phitau2)")
+# println("dphideltadtau $(dphideltadtau)")
+#enddebug
 return sub
 end
 
