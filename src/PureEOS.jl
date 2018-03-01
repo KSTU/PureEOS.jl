@@ -7,6 +7,7 @@ export waterSaturate, waterSinglephase
 export waterCritical, waterTriple
 export waterVisc, waterViscMax
 export waterTherm
+export LJSinglephase
 
 mutable struct singlephase
 	T::Float64
@@ -78,4 +79,5 @@ function newViscMax():viscmax
 end
 
 include("water.jl")
+include("LJ.jl")
 end # module
