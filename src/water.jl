@@ -555,7 +555,7 @@ function waterTherm(T,n)
 	if (y<1.7e-7)
 		Z=0
 	else
-		Z=2/3.14159265359/y*(((1-1/k)*atan(y)+y/k)-(1.0-exp(-1/(1/y+y^2/3/nb^2))))
+		Z=2/pi/y*(((1-1/k)*atan(y)+y/k)-(1.0-exp(-1/(1/y+y^2/3/nb^2))))
 	end
 	mub=waterVisc(T,n)
 

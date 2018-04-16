@@ -24,4 +24,13 @@ println("thermalconductivity test")
 @test waterTherm(647.35,422/18.015268) ≈ 448.883487 atol=20
 @test waterTherm(647.35,750/18.015268) ≈ 600.961346 atol=0.001
 
+println("ethanol thermalconductivity test")
+#@test ethanolTherm(300.0,850.0/46.0) ≈ 209.68 atol=2
+#@test ethanolTherm(400.0,2.0/46.0) ≈ 26.108 atol=1
+#@test ethanolTherm(400.0,690.0/46.0) ≈ 149.21 atol=1.5
+#@test ethanolTherm(500.0,10.0/46.0) ≈ 39.594 atol=1
+#@test ethanolTherm(500.0,10.0/46.0) ≈ 40.755 atol=1
+
+
+
 #Data from NIST

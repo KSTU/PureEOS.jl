@@ -3,11 +3,19 @@ module PureEOS
 # package code goes here
 using Roots
 
+#water
 export waterSaturate, waterSinglephase
 export waterCritical, waterTriple
 export waterVisc, waterViscMax
 export waterTherm
+
+#Lennard Jones
 export LJSinglephase
+
+#ethanol
+export ethanolSaturate, ethanolCritical
+export ethanolTriple, ethanolSinglephase
+export ethanolTherm, ethanolVisc
 
 mutable struct singlephase
 	T::Float64
@@ -80,4 +88,5 @@ end
 
 include("water.jl")
 include("LJ.jl")
+include("ethanol.jl")
 end # module
