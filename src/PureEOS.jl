@@ -17,6 +17,10 @@ export ethanolSaturate, ethanolCritical
 export ethanolTriple, ethanolSinglephase
 export ethanolTherm, ethanolVisc
 
+#ethane
+export ethaneSinglephase,ethaneCritical
+export ethaneSaturate,ethaneTriple
+
 mutable struct singlephase
 	T::Float64
 	p::Float64
@@ -58,7 +62,7 @@ mutable struct triple
 	T::Float64
 	p::Float64
 	vRo::Float64
-	lro::Float64
+	lRo::Float64
 end
 
 mutable struct viscmax
@@ -89,4 +93,5 @@ end
 include("water.jl")
 include("LJ.jl")
 include("ethanol.jl")
+include("ethane.jl")
 end # module
