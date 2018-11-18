@@ -2,6 +2,7 @@ module PureEOS
 
 # package code goes here
 using Roots
+using Dierckx
 
 #water
 export waterSaturate, waterSinglephase
@@ -20,6 +21,9 @@ export ethanolTherm, ethanolVisc
 #ethane
 export ethaneSinglephase,ethaneCritical
 export ethaneSaturate,ethaneTriple
+
+#stocmayer
+export StECH
 
 mutable struct singlephase
 	T::Float64
@@ -94,4 +98,5 @@ include("water.jl")
 include("LJ.jl")
 include("ethanol.jl")
 include("ethane.jl")
+include("Stockmayer.jl")
 end # module
