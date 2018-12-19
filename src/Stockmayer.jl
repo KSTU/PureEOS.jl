@@ -108,8 +108,8 @@ tb::Float64 = T/eps
 nb::Float64 = n*Na*1000.0*sigw^3
 
 #integrals
-omega11::Float64 = evaluate(spline11, tb, nb)
-omega22::Float64 = evaluate(spline22, tb, nb)
+omega11::Float64 = evaluate(spline11, tb, del)
+omega22::Float64 = evaluate(spline22, tb, del)
 
 #println("$(omega11) Na $(Na) $(pi) sigma $(sigma) tb $(tb) nb $(nb)")
 
