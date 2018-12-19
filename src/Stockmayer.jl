@@ -113,12 +113,17 @@ omega22::Float64 = evaluate(spline22, tb, nb)
 
 #println("$(omega11) Na $(Na) $(pi) sigma $(sigma) tb $(tb) nb $(nb)")
 
-D0::Float64=3.0/(8.0*sqrt(pi)*nb)*sqrt(tb)/omega11;
+D0z::Float64=3.0/(8.0*sqrt(pi)*nb)*sqrt(tb)/omega11
 #println("D0 $(D0)")
-D::Float64=D0*sigw/sqrt(Mm/1000/Na/(eps*kb))*10^9;
+D0::Float64=D0z*sigw/sqrt(Mm/1000/Na/(eps*kb))*10^9
 #println("D $(D)")
 
+nu0z::Float64=5.0/(16.0*sqrt(pi))*sqrt(tb)/omega22
+nu0::Float64=nu0z*sqrt(Mm/1000/Na/(eps*kb))/sigw^2*10^6
 
-return [D, 0.1]
+la0z=75/(64*sqrt(pi))*sqrt(tb)/omega22
+la0=la0z*kb/sigw^2/sqrt(Mm/1000/Na/(eps*kb))
+
+return [D0z, D0]
 end
 
