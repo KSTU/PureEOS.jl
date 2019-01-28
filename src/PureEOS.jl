@@ -18,6 +18,10 @@ export ethanolSaturate, ethanolCritical
 export ethanolTriple, ethanolSinglephase
 export ethanolTherm, ethanolVisc
 
+#methanol
+export methanolSaturate, methanolCritical
+export methanolTriple, methanolSinglephase
+
 #ethane
 export ethaneSinglephase,ethaneCritical
 export ethaneSaturate,ethaneTriple
@@ -99,4 +103,5 @@ include("LJ.jl")
 include("ethanol.jl")
 include("ethane.jl")
 include("Stockmayer.jl")
+include("methanol.jl")
 end # module
