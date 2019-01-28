@@ -101,7 +101,7 @@ sigw::Float64=sigma*10^(-9)	#to [m]
 
 #condstants
 Na::Float64 = 6.02 * 10.0^23
-kb::Float64 = 1.38*10^-23;
+kb::Float64 = 1.38*10.0^-23;
 
 #dimensionless units
 tb::Float64 = T/eps
@@ -119,11 +119,12 @@ D0::Float64=D0z*sigw/sqrt(Mm/1000/Na/(eps*kb))*10^9
 #println("D $(D)")
 
 nu0z::Float64=5.0/(16.0*sqrt(pi))*sqrt(tb)/omega22
-nu0::Float64=nu0z*sqrt(Mm/1000/Na/(eps*kb))/sigw^2*10^6
+#out.nu0=nu0*sqrt(mw/Na*(epsw*kb))/sigw^2*10^6;
+nu0::Float64=nu0z*sqrt(Mm/1000/Na*(eps*kb))/sigw^2*10^6
 
 la0z=75/(64*sqrt(pi))*sqrt(tb)/omega22
 la0=la0z*kb/sigw^2/sqrt(Mm/1000/Na/(eps*kb))
 
-return [D0z, D0]
+return [D0z, D0, nu0z, nu0, la0z, la0]
 end
 
