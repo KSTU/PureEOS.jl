@@ -66,11 +66,7 @@ return sub
 end
 
 """
-calculate ethanol properties at single phase
-A Fundamental Equation of State for Ethanol
-J. A. Schroeder, S. G. Penoncello, and J. S. Schroeder
-Citation: Journal of Physical and Chemical Reference Data 43, 043102 (2014); doi: 10.1063/1.4895394
-Valid for up to 2800 bar and fromn 160 to 200 K
+calculate methanol properties at single phase
 
 
 T --- temperature, Kelvin
@@ -210,16 +206,23 @@ sub.ro=ro
 sub.p=(1.0+phidelta*delta)*ro*R*T/100.0	#bar
 sub.z=1.0+phidelta*delta	#
 #ideal part
-n0=[-12.7531, 9.39094, 3.43069, 2.14326, 5.09206, 6.60138, 5.70777]
-gamma0=[0.0, 0.0, 0.0, 0.816771, 2.59175, 3.80408, 8.58736]
+n0=[2.496674887, 2.900791185, -62.57135350, 10.99267739, 18.33682995, -16.36600476, -6.223234762, 2.803536282, 1.077809894, 0.969656970]
+gamma0=[0.0, 0.0, 0.0, 4.119785, 3.264999, 3.769463, 2.931493, 8.225557, 10.31627, 0.5324892]
 
-#entropy
-phi0=log(delta)+n0[1]+n0[2]*tau+n0[3]*log(tau)+n0[4]*log(1.0-exp(-gamma0[4]*tau))+n0[5]*log(1.0-exp(-gamma0[5]*tau))+n0[6]*log(1.0-exp(-gamma0[6]*tau))+n0[7]*log(1.0-exp(-gamma0[7]*tau))
-phi0tau=n0[2]+n0[3]/tau+n0[4]*gamma0[4]*(1.0/(1.0-exp(-gamma0[4]*tau))-1.0)+n0[5]*gamma0[5]*(1.0/(1.0-exp(-gamma0[5]*tau))-1.0)+n0[6]*gamma0[6]*(1.0/(1.0-exp(-gamma0[6]*tau))-1.0)+n0[7]*gamma0[7]*(1.0/(1.0-exp(-gamma0[7]*tau))-1.0)
-phi0delta=1/delta
-phi0delta2=-1/delta^2
-phi0tau2=-n0[3]/tau^2-n0[4]*gamma0[4]^2*exp(-gamma0[4]*tau)*(1.0-exp(-gamma0[4]*tau))^(-2)-n0[5]*gamma0[5]^2*exp(-gamma0[5]*tau)*(1.0-exp(-gamma0[5]*tau))^(-2)-n0[6]*gamma0[6]^2*exp(-gamma0[6]*tau)*(1.0-exp(-gamma0[6]*tau))^(-2)-n0[7]*gamma0[7]^2*exp(-gamma0[7]*tau)*(1.0-exp(-gamma0[7]*tau))^(-2)
+phi0 = n0[1] + n0[2]*log(tau) + n0[3]*tau + n0[4]*log(exp(gamma0[4]*tau)-1.0) + n0[5]*log(exp(gamma0[5]*tau)-1.0) + n0[6]*log(exp(gamma0[6]*tau)-1.0) + n0[7]*log(exp(gamma0[7]*tau)-1.0) + n0[8]*log(exp(gamma0[8]*tau)-1.0) + n0[9]*log(exp(gamma0[9]*tau)-1.0) + n0[10]*log(exp(gamma0*tau)-1.0)
+phi0tau = n0[2]/tau + n0[3] + n0[4]*gamma0[4]*exp(gamma0[4]*tau)/(exp(gamma0[4]*tau)-1.0)+ n0[5]*gamma0[5]*exp(gamma0[5]*tau)/(exp(gamma0[5]*tau)-1.0) + n0[6]*gamma0[6]*exp(gamma0[6]*tau)/(exp(gamma0[6]*tau)-1.0) + n0[7]*gamma0[7]*exp(gamma0[7]*tau)/(exp(gamma0[7]*tau)-1.0) + n0[8]*gamma0[8]*exp(gamma0[8]*tau)/(exp(gamma0[8]*tau)-1.0) + n0[9]*gamma0[9]*exp(gamma0[9]*tau)/(exp(gamma0[9]*tau)-1.0) + n0[10]*gamma0[10]*exp(gamma0[10]*tau)/(exp(gamma0[10]*tau)-1.0)
+phi0tau2 = -n0[2]/tau^2 + gamma0[4]*n0[4]*exp(gamma0[4]*tau)/(exp(gamma0[4]*tau)-1.0) - gamma0[4]^2*n0[4]*exp(2.0*gamma0[4]*tau)/(exp(gamma0[4]*tau)-1.0)^2 + gamma0[5]*n0[5]*exp(gamma0[5]*tau)/(exp(gamma0[5]*tau)-1.0) - gamma0[5]^2*n0[5]*exp(2.0*gamma0[5]*tau)/(exp(gamma0[5]*tau)-1.0)^2 + gamma0[6]*n0[6]*exp(gamma0[6]*tau)/(exp(gamma0[6]*tau)-1.0) - gamma0[6]^2*n0[6]*exp(2.0*gamma0[6]*tau)/(exp(gamma0[6]*tau)-1.0)^2 + gamma0[7]*n0[7]*exp(gamma0[7]*tau)/(exp(gamma0[7]*tau)-1.0) - gamma0[7]^2*n0[7]*exp(2.0*gamma0[7]*tau)/(exp(gamma0[7]*tau)-1.0)^2 + gamma0[8]*n0[8]*exp(gamma0[8]*tau)/(exp(gamma0[8]*tau)-1.0) - gamma0[8]^2*n0[8]*exp(2.0*gamma0[8]*tau)/(exp(gamma0[8]*tau)-1.0)^2 + gamma0[9]*n0[9]*exp(gamma0[9]*tau)/(exp(gamma0[9]*tau)-1.0) - gamma0[9]^2*n0[9]*exp(2.0*gamma0[9]*tau)/(exp(gamma0[9]*tau)-1.0)^2 + gamma0[10]*n0[10]*exp(gamma0[10]*tau)/(exp(gamma0[10]*tau)-1.0) - gamma0[10]^2*n0[10]*exp(2.0*gamma0[10]*tau)/(exp(gamma0[10]*tau)-1.0)^2
+ 
+phi0delta = 0.0
+phi0delta2 = 0.0
 phi0taudelta=0.0
+#entropy
+#phi0=log(delta)+n0[1]+n0[2]*tau+n0[3]*log(tau)+n0[4]*log(1.0-exp(-gamma0[4]*tau))+n0[5]*log(1.0-exp(-gamma0[5]*tau))+n0[6]*log(1.0-exp(-gamma0[6]*tau))+n0[7]*log(1.0-exp(-gamma0[7]*tau))
+#phi0tau=n0[2]+n0[3]/tau+n0[4]*gamma0[4]*(1.0/(1.0-exp(-gamma0[4]*tau))-1.0)+n0[5]*gamma0[5]*(1.0/(1.0-exp(-gamma0[5]*tau))-1.0)+n0[6]*gamma0[6]*(1.0/(1.0-exp(-gamma0[6]*tau))-1.0)+n0[7]*gamma0[7]*(1.0/(1.0-exp(-gamma0[7]*tau))-1.0)
+#phi0delta=1/delta
+#phi0delta2=-1/delta^2
+#phi0tau2=-n0[3]/tau^2-n0[4]*gamma0[4]^2*exp(-gamma0[4]*tau)*(1.0-exp(-gamma0[4]*tau))^(-2)-n0[5]*gamma0[5]^2*exp(-gamma0[5]*tau)*(1.0-exp(-gamma0[5]*tau))^(-2)-n0[6]*gamma0[6]^2*exp(-gamma0[6]*tau)*(1.0-exp(-gamma0[6]*tau))^(-2)-n0[7]*gamma0[7]^2*exp(-gamma0[7]*tau)*(1.0-exp(-gamma0[7]*tau))^(-2)
+#phi0taudelta=0.0
 
 #Entropy
 sub.s=(tau*(phi0tau+phitau)-phi0-phir)*R
