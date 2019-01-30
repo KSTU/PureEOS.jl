@@ -38,7 +38,7 @@ p --- pressure in bar
 vRo --- vapor density in mol/l
 lRo --- liquid density in mol/l
 """
-function ethanolSaturate(T)
+function methanolSaturate(T)
 A=[-8.8570247, 2.4072447, -2.6452501, -1.5044111]
 pA=[1.0, 1.5, 2.0, 3.5]
 
