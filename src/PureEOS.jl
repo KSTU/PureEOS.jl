@@ -29,6 +29,10 @@ export ethaneSaturate,ethaneTriple
 #stocmayer
 export StECH
 
+#mathane
+export methaneSaturate, methaneSinglephase
+export methaneCritical, methaneTriple
+
 mutable struct singlephase
 	T::Float64
 	p::Float64
