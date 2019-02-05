@@ -108,4 +108,5 @@ include("ethanol.jl")
 include("ethane.jl")
 include("Stockmayer.jl")
 include("methanol.jl")
+include("methane.jl")
 end # module
