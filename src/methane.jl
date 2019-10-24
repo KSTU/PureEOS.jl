@@ -335,7 +335,7 @@ Huber M.L. et al. New International Formulation for the Viscosity of H[sub 2]O /
 
 
 """
-function waterVisc(T,n)
+function methaneVisc(T,n)
 mu_ref=1	#*10^(-6)	#\mu Pa*s
 Tb=T/waterCritical().T;
 nb=n/waterCritical().ro;
@@ -375,7 +375,7 @@ return mu_ref*mu_0*mu_1*mu_2
 end
 
 
-function waterViscMax(T)
+function methaneViscMax(T)
 	sub=newViscMax()
 	if(T<=373.0)
 		sub.p=10000.0
@@ -399,7 +399,7 @@ thermalconductivity of water
 *warning* due using IAPWS-95 wrong prediction in near critical region
 
 """
-function waterTherm(T,n)
+function methaneTherm(T,n)
 	crit=waterCritical()
 	Tb=T/crit.T
 	nb=n/crit.ro
