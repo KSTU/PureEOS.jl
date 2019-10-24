@@ -419,6 +419,19 @@ sub.dpdt=R/100.0*T*(1.0+2*delta*phidelta+delta^2*phidelta2)
 return sub
 end
 
+"""
+calculate points at maximum pressure where EOS works
+"""
+function waterMax(T)
+	sub=newViscMax()
+	if(T < waterCritical().T)
+		init = waterSaturate(T).lRo*1.2
+	else
+		init = waterCritical().T*1.3
+	end
+	sub.p=10000.0
+	sub.ro=fzero(x -> waterSinglephase(T,x).p-sub.p, init)
+end
 
 """
 calculate water viscosity
