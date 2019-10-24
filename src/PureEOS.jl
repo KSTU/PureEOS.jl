@@ -111,7 +111,7 @@ function newViscMax():viscmax
 end
 
 function newBound()::bound
-	return(0.0, 0.0, 0.0, 0.0)
+	return bound(0.0, 0.0, 0.0, 0.0)
 end
 
 include("water.jl")
