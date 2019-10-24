@@ -5,7 +5,7 @@ using Roots
 using Dierckx
 
 #water
-export waterSaturate, waterSinglephase
+export waterSaturate, waterSinglephase, waterMax
 export waterCritical, waterTriple
 export waterVisc, waterViscMax
 export waterTherm
