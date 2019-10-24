@@ -434,6 +434,76 @@ function waterMax(T)
 end
 
 """
+ice boundary
+"""
+function waterIceBoundary(T)
+	sub=newBound()
+	if((T<waterTriple().T) & (T>251.165))
+		#down bound
+		pn = 0.000611657 * 10
+		th = T/273.16
+		sub.pDown = pn * (1-0.626*10^6*(1-th^(-3))) + 0.197135*10^6*(1-th^21.2)
+		init = waterTriple().lRo*1.0
+		sub.roDown = fzero(x -> waterSinglephase(T,x).p-sub.pDown, init)
+		#up bound
+		if((T>=251.165) & (T<256.164))
+			pn = 209.9 * 10
+			th = T / 251.165
+			sub.pUp = pn * (1 - 0.295252*(1-th^60))
+		elseif((T>=256.164) & (T<273.31))
+			pn = 350.1 *10
+			th = T / 256.164
+			sub.pUp = pn * (1 - 1.18721 * (1-th^8))
+		end
+		init = waterTriple().lRo*1.0
+		sub.roUp = fzero(x -> waterSinglephase(T,x).p-sub.pUp, init)
+	elseif(T>waterTriple().T)
+		if((T>=256.164) & (T<273.31))
+			pn = 350.1 *10
+			th = T / 256.164
+			sub.pUp = pn * (1 - 1.18721 * (1-th^8))
+		elseif((T>=273.31) & (T<355))
+			pn = 632.4 * 10
+			th = T / 273.31
+			sub.pUp = pn * (1-1.07476 * (1-th^4.6))
+		elseif((T>=355) & (T<715))
+			pn = 2216*10
+			th = T / 355
+			sub.pUp = pn * exp(1.73683 * (1-th^(-1))-0.0544606*(1-th^5)+0.806106*10^(-7)*(1-th^22))
+		end
+		init = waterTriple().lRo*1.1
+		sub.roUp = fzero(x -> waterSinglephase(T,x).p-sub.pUp, init)
+	end
+end
+"""
+water ice pressure
+"""
+function waterIce(T)
+	sub=newCritical()	#one point
+	if((T>273.16)) & (T<251.165))
+		pn = 0.000611657 * 10
+		th = T/273.16
+		sub.p = pn * (1-0.626*10^6*(1-th^(-3))) + 0.197135*10^6*(1-th^21.2)
+	elseif((T>=251.165) & (T<256.164))
+		pn = 209.9 * 10
+		th = T / 251.165
+		sub.p = pn * (1 - 0.295252*(1-th^60))
+	elseif((T>=256.164) & (T<273.31))
+		pn = 350.1 *10
+		th = T / 256.164
+		sub.p = pn * (1 - 1.18721 * (1-th^8))
+	elseif((T>=273.31) & (T<355))
+		pn = 632.4 * 10
+		th = T / 273.31
+		sub.p = pn * (1-1.07476 * (1-th^4.6))
+	elseif((T>=355) & (T<715))
+		pn = 2216*10
+		th = T / 355
+		sub.p = pn * exp(1.73683 * (1-th^(-1))-0.0544606*(1-th^5)+0.806106*10^(-7)*(1-th^22))
+	end
+	#get 
+end
+"""
 calculate water viscosity
 Huber M.L. et al. New International Formulation for the Viscosity of H[sub 2]O // J. Phys. Chem. Ref. Data. 2009. Vol. 38, № 2. P. 101.
 10.1063/1.3088050

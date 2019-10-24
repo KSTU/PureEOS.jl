@@ -6,6 +6,7 @@ using Dierckx
 
 #water
 export waterSaturate, waterSinglephase, waterMax
+export waterIceBoundary
 export waterCritical, waterTriple
 export waterVisc, waterViscMax
 export waterTherm
@@ -82,6 +83,13 @@ mutable struct viscmax
 	ro::Float64
 end
 
+mutable struct bound
+	pUp::Float64
+	roUp::Float64
+	pDown::Float64
+	roDown::Float64
+end
+
 function newSingle()::singlephase
 	return singlephase(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
 end
@@ -100,6 +108,10 @@ end
 
 function newViscMax():viscmax
 	return viscmax(0,0)
+end
+
+function newBound()::bound
+	return(0.0, 0.0, 0.0, 0.0)
 end
 
 include("water.jl")
