@@ -474,6 +474,7 @@ function waterIceBoundary(T)
 		init = waterTriple().lRo*1.1
 		sub.roUp = fzero(x -> waterSinglephase(T,x).p-sub.pUp, init)
 	end
+	return sub
 end
 """
 water ice pressure
