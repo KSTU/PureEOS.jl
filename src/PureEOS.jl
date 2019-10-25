@@ -86,6 +86,7 @@ end
 mutable struct bound
 	pUp::Float64
 	roUp::Float64
+	tUp::Float64
 	pDown::Float64
 	roDown::Float64
 end
@@ -111,7 +112,7 @@ function newViscMax():viscmax
 end
 
 function newBound()::bound
-	return bound(0.0, 0.0, 0.0, 0.0)
+	return bound(0.0, 300.242822876033, 0.0, 0.0, 0.0)
 end
 
 include("water.jl")
