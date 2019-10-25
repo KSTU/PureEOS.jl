@@ -442,7 +442,7 @@ function waterIceBoundary(T)
 		#down bound
 		pn = 0.000611657 * 10
 		th = T/273.16
-		sub.pDown = pn * (1-0.626*10^6*(1-th^(-3))) + 0.197135*10^6*(1-th^21.2)
+		sub.pDown = pn * (1-0.626*10^6*(1-th^(-3)) + 0.197135*10^6*(1-th^21.2))
 		init = waterTriple().lRo*1.0
 		sub.roDown = fzero(x -> waterSinglephase(T,x).p-sub.pDown, init)
 		#up bound
