@@ -474,6 +474,7 @@ function waterIceBoundary(T)
 		init = waterTriple().lRo*1.1
 		sub.roUp = fzero(x -> waterSinglephase(T,x).p-sub.pUp, init)
 	end
+	sub.tUp = 300.242822876033
 	return sub
 end
 """
