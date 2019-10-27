@@ -590,6 +590,7 @@ function waterThermMax(T)
         init = 45
     end
     sub.ro = find_zero(x -> waterSinglephase(T, x).p - sub.p, init)
+    return sub
 end
 
 """
