@@ -571,6 +571,27 @@ function waterViscMax(T)
 	return sub
 end
 
+function waterThermMax(T)
+    sub = newViscMax()
+    if(T < 348)
+        sub.p = 10000.0
+        init = 65.0
+    elseif((T >= 348) & (T < 403))
+        sub.p = 7850
+        init = 60
+    elseif((T >= 403) & (T < 573))
+        sub.p = 6870
+        init = 57
+    elseif((T >= 573) & (T < 874))
+        sub.p = 2500
+        init = 52
+    elseif((T >= 874) & (T < 1173))
+        sub.p = 1000
+        init = 45
+    end
+    sub.ro = find_zero(x -> waterSinglephase(T, x).p - sub.p, init)
+end
+
 """
 thermalconductivity of water
 *warning* due using IAPWS-95 wrong prediction in near critical region

@@ -9,7 +9,7 @@ export waterSaturate, waterSinglephase, waterMax
 export waterIceBoundary
 export waterCritical, waterTriple
 export waterVisc, waterViscMax
-export waterTherm
+export waterTherm, waterThermMax
 
 #Lennard Jones
 export LJSinglephase
