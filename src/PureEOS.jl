@@ -17,8 +17,8 @@ export LJSinglephase
 #ethanol
 export ethanolSaturate, ethanolCritical
 export ethanolTriple, ethanolSinglephase
-export ethanolTherm, waterThermMax
-export ethanolVisc, waterViscMax
+export ethanolTherm, ethanolThermMax
+export ethanolVisc, ethanolViscMax
 
 
 #methanol
