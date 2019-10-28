@@ -308,6 +308,13 @@ function ethanolVisc(T,ro)
 end
 
 """
+ethanol viscosity maximum
+"""
+function ethanolViscMax(T)
+	
+end
+
+"""
 ethanol thermal conductivity, [m W m^-1 K^-1]
 Reference Correlation of the Thermal Conductivity of Ethanol from the Triple Point to 600 K and up to 245 MPa
 M. J. Assael, E. A. Sykioti, M. L. Huber and R. A. Perkins
