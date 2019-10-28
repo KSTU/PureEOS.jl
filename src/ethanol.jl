@@ -313,10 +313,10 @@ ethanol viscosity maximum
 function ethanolViscMax(T)
 	sub = newViscMax()
 	if(T < 480)
-		sub.p = 2500
+		sub.p = 1000
 		init = ethanolSaturate(T)*1.2
 	else
-		sub.p = 500
+		sub.p = 1000
 		if(T < ethanolCritical().T)
 			init = ethanolSaturate(T)*1.2
 		else
