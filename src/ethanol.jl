@@ -311,7 +311,20 @@ end
 ethanol viscosity maximum
 """
 function ethanolViscMax(T)
-	
+	sub = newViscMax()
+	if(T < 480)
+		sub.p = 2500
+		init = ethanolSaturate(T)*1.2
+	else
+		sub.p = 500
+		if(T < ethanolCritical().T)
+			init = ethanolSaturate(T)*1.2
+		else
+			init = ethanolCritical().ro * 1.2
+		end
+	end
+	sub.ro = find_zero(x -> ethanolSinglephase(T,x).p-sub.p, init)
+	return sub
 end
 
 """
@@ -376,3 +389,24 @@ function ethanolTherm(T,ro)
 	return la0+dla*1000.0+dlac
 end
 
+"""
+
+
+"""
+function ethanolThermMax(T)
+	sub = newViscMax()
+	if(T < 480)
+		sub.p = 2500
+		init = ethanolSaturate(T)*1.2
+	else
+		sub.p = 2500
+		if(T < ethanolCritical().T)
+			init = ethanolSaturate(T)*1.2
+		else
+			init = ethanolCritical().ro * 1.2
+		end
+	end
+	sub.ro = find_zero(x -> ethanolSinglephase(T,x).p-sub.p, init)
+	return sub
+	
+end
