@@ -273,7 +273,7 @@ function ethanolMax(T)
 	sub = newViscMax()
 	if(T < ethanolCritical().T)
 		sub.p = 2800
-		init = ethanolSaturate(T)*1.2
+		init = ethanolSaturate(T).lRo*1.2
 	else
 		sub.p = 2800
 		init = ethanolCritical().ro * 1.2
@@ -331,11 +331,11 @@ function ethanolViscMax(T)
 	sub = newViscMax()
 	if(T < 480)
 		sub.p = 1000
-		init = ethanolSaturate(T)*1.2
+		init = ethanolSaturate(T).lRo*1.2
 	else
 		sub.p = 1000
 		if(T < ethanolCritical().T)
-			init = ethanolSaturate(T)*1.2
+			init = ethanolSaturate(T).lRo*1.2
 		else
 			init = ethanolCritical().ro * 1.2
 		end
@@ -414,11 +414,11 @@ function ethanolThermMax(T)
 	sub = newViscMax()
 	if(T < 480)
 		sub.p = 2500
-		init = ethanolSaturate(T)*1.2
+		init = ethanolSaturate(T).lRo*1.2
 	else
 		sub.p = 2500
 		if(T < ethanolCritical().T)
-			init = ethanolSaturate(T)*1.2
+			init = ethanolSaturate(T).lRo*1.2
 		else
 			init = ethanolCritical().ro * 1.2
 		end
