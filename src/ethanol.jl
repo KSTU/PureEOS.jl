@@ -267,6 +267,23 @@ return sub
 end 
 
 """
+calculates maximum of eos works
+"""
+function ethanolMax(T)
+	sub = newViscMax()
+	if(T < ethanolCritical().T)
+		sub.p = 2800
+		init = ethanolSaturate(T)*1.2
+	else
+		sub.p = 2800
+		init = ethanolCritical().ro * 1.2
+	end
+	sub.ro = find_zero(x -> ethanolSinglephase(T,x).p-sub.p, init)
+	return sub
+end
+
+
+"""
 uPa*s
 Generalized SAFT-DFT/DMT Model for the Thermodynamic,
 Interfacial, and Transport Properties of Associating Fluids:
