@@ -427,3 +427,17 @@ function ethanolThermMax(T)
 	return sub
 	
 end
+
+"""
+ethanol meltion line
+
+"""
+function ethanolIceBound(T)
+	sub = newCritical()	#one point
+	sub.p = 4369 * ((T/158.37)^2.6432 -1)
+	init = ethanolTriple().lRo*1.02
+	sub.ro = find_zero(x -> ethanolSinglephase(T,x).p-sub.p, init)
+
+
+end
+
