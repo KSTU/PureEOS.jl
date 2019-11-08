@@ -431,6 +431,7 @@ function waterMax(T)
 	end
 	sub.p=10000.0
 	sub.ro=fzero(x -> waterSinglephase(T,x).p-sub.p, init)
+	return sub
 end
 
 """
