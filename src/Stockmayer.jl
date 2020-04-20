@@ -125,6 +125,6 @@ nu0::Float64=nu0z*sqrt(Mm/1000/Na*(eps*kb))/sigw^2*10^6
 la0z=75/(64*sqrt(pi))*sqrt(tb)/omega22
 la0=la0z*kb/sigw^2/sqrt(Mm/1000/Na/(eps*kb))
 
-return [D0z, D0, nu0z, nu0, la0z, la0]
+return [D0z, D0, nu0z, nu0, la0z, la0, omega11, omega22]
 end
 
