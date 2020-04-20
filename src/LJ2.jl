@@ -7,8 +7,8 @@ ro --- density in mol/l
 function LJ2Critical()
 	sub=newCritical()
 	sub.T=1.32
-	sub.p=4.8722*10.0	#MPa to bar
-	sub.ro=0.13006	#mol/l #322 kg/m^3
+	sub.p=0.13006	#MPa to bar
+	sub.ro=0.31	#mol/l #322 kg/m^3
 	return sub
 end
 
