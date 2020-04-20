@@ -37,6 +37,10 @@ export StECH
 export methaneSaturate, methaneSinglephase
 export methaneCritical, methaneTriple
 
+#lennard jones
+export LJ2Critical, LJ2Triple
+export LJ2Singlephase
+
 mutable struct singlephase
 	T::Float64
 	p::Float64
@@ -125,4 +129,5 @@ include("ethane.jl")
 include("Stockmayer.jl")
 include("methanol.jl")
 include("methane.jl")
+include("LJ2.jl")
 end # module
