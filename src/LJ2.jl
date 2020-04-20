@@ -89,7 +89,7 @@ sub=newSingle()
 crit=LJ2Critical()
 delta=ro/crit.ro
 tau=crit.T/T
-R=8.3144598
+R=1 #8.3144598
 mm=0.03006904
 
 nOne=6
@@ -191,7 +191,7 @@ end
 
 sub.T=T
 sub.ro=ro
-sub.p=(1.0+phidelta*delta)*ro*R*T/100.0	#bar
+sub.p=(1.0+phidelta*delta)*ro*T	#bar
 sub.z=1.0+phidelta*delta	#
 #ideal part
 n0=[9.212802589, 
@@ -228,16 +228,16 @@ dphidt=dtaudtau*dphideltadtau
 #phidelta
 #phidelta*delta
 #(1+phi0+phir+phidelta*delta)
-sub.g=(1+phi0+phir+phidelta*delta)*R*T	#R*cur_temp*
-sub.g0=(1+phi0)*R*T
+sub.g=(1+phi0+phir+phidelta*delta)*T	#R*cur_temp*
+sub.g0=(1+phi0)*T
 sub.dg=(phir+phidelta*delta)	#deriver RT
 #
-sub.f=(phi0+phir)*R*T
-sub.f0=phi0*R*T
+sub.f=(phi0+phir)*T
+sub.f0=phi0*T
 sub.df=phir
 
 #Energy
-sub.u=tau*(phi0tau+phitau)*R*T
+sub.u=tau*(phi0tau+phitau)*T
 sub.du=tau*(phitau)
 #
 sub.h=(1+tau*(phi0tau+phitau)+delta*phidelta)*R*T
