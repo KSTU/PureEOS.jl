@@ -11,9 +11,9 @@ function LJSinglephase(T,ro)
 -8.867771540418822e03; -3.986982844450543e01; -4.689270299917261e03; 2.593535277438717e02; -2.6945235894349033e03;
 -7.218487631550215e02; 1.721802063863269e02;]
 	
-	a=Array{Float64}(8)
-	b=Array{Float64}(6)
-	G=Array{Float64}(6)
+	a=Array{Float64}(undef, 8)
+	b=Array{Float64}(undef, 6)
+	G=Array{Float64}(undef, 6)
 	
 	a[1]=x[1]*T+x[2]*sqrt(T)+x[3]+x[4]/T+x[5]/(T^2);
 	a[2]=x[6]*T+x[7]+x[8]/T+x[9]/(T^2);
