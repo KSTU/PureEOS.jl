@@ -205,12 +205,12 @@ n0=[6.262265814,
 gamma0=[0.0, 0.0, 0.0, 1.4091052332, 4.0099170712, 6.5967098342, 13.9798102659,1.0]
 
 #entropy
-phi0=log(delta)+n0[1]+n0[2]*tau+n0[3]*log(tau)+n0[4]*log(1.0-exp(-gamma0[4]*tau))+n0[5]*log(1.0-exp(-gamma0[5]*tau))+n0[6]*log(1.0-exp(-gamma0[6]*tau))+n0[7]*log(1.0-exp(-gamma0[7]*tau))+n0[8]*log(1.0-exp(-gamma0[8]*tau))
+phi0=log(delta)+n0[1]+n0[2]*tau+n0[3]*log(tau)
 
-phi0tau=n0[2]+n0[3]/tau+n0[4]*gamma0[4]*(1.0/(1.0-exp(-gamma0[4]*tau))-1.0)+n0[5]*gamma0[5]*(1.0/(1.0-exp(-gamma0[5]*tau))-1.0)+n0[6]*gamma0[6]*(1.0/(1.0-exp(-gamma0[6]*tau))-1.0)+n0[7]*gamma0[7]*(1.0/(1.0-exp(-gamma0[7]*tau))-1.0)+n0[8]*gamma0[8]*(1.0/(1.0-exp(-gamma0[8]*tau))-1.0)
+phi0tau=n0[2]+n0[3]/tau
 phi0delta=1/delta
 phi0delta2=-1/delta^2
-phi0tau2=-n0[3]/tau^2-n0[4]*gamma0[4]^2*exp(-gamma0[4]*tau)*(1.0-exp(-gamma0[4]*tau))^(-2)-n0[5]*gamma0[5]^2*exp(-gamma0[5]*tau)*(1.0-exp(-gamma0[5]*tau))^(-2)-n0[6]*gamma0[6]^2*exp(-gamma0[6]*tau)*(1.0-exp(-gamma0[6]*tau))^(-2)-n0[7]*gamma0[7]^2*exp(-gamma0[7]*tau)*(1.0-exp(-gamma0[7]*tau))^(-2)-n0[8]*gamma0[8]^2*exp(-gamma0[8]*tau)*(1.0-exp(-gamma0[8]*tau))^(-2)
+phi0tau2=-n0[3]/tau^2
 phi0taudelta=0
 
 #Entropy
