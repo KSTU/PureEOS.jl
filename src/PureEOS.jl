@@ -1,44 +1,12 @@
 module PureEOS
+export greet
 
-# package code goes here
 using Roots
 using Dierckx
 
-#water
-export waterSaturate, waterSinglephase, waterMax
-export waterIceBoundary
-export waterCritical, waterTriple
-export waterVisc, waterViscMax
-export waterTherm, waterThermMax
-
-#Lennard Jones
+export LJCritical
+export LJTriple
 export LJSinglephase
-
-#ethanol
-export ethanolSaturate, ethanolCritical
-export ethanolIceBound
-export ethanolTriple, ethanolSinglephase, ethanolMax
-export ethanolTherm, ethanolThermMax
-export ethanolVisc, ethanolViscMax
-
-
-#methanol
-export methanolSaturate, methanolCritical
-export methanolTriple, methanolSinglephase
-
-#ethane
-export ethaneSinglephase,ethaneCritical
-export ethaneSaturate,ethaneTriple
-
-#stocmayer
-export StECH
-
-#mathane
-export methaneSaturate, methaneSinglephase
-export methaneCritical, methaneTriple
-
-#lennard jones
-export LJ2Critical, LJ2Triple
 export LJ2Singlephase
 
 mutable struct singlephase
@@ -65,13 +33,6 @@ mutable struct singlephase
 	dpdt::Float64
 end
 
-mutable struct saturate
-	T::Float64
-	p::Float64
-	vRo::Float64
-	lRo::Float64
-end
-
 mutable struct critical
 	T::Float64
 	p::Float64
@@ -85,25 +46,8 @@ mutable struct triple
 	lRo::Float64
 end
 
-mutable struct viscmax
-	p::Float64
-	ro::Float64
-end
-
-mutable struct bound
-	pUp::Float64
-	roUp::Float64
-	tUp::Float64
-	pDown::Float64
-	roDown::Float64
-end
-
 function newSingle()::singlephase
 	return singlephase(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
-end
-
-function newSaturate()::saturate
-	return saturate(0,0,0,0)
 end
 
 function newCritical():critical
@@ -114,20 +58,7 @@ function newTriple():triple
 	return triple(0,0,0,0)
 end
 
-function newViscMax():viscmax
-	return viscmax(0,0)
-end
-
-function newBound()::bound
-	return bound(0.0, 300.242822876033, 0.0, 0.0, 0.0)
-end
-
-include("water.jl")
 include("LJ.jl")
-include("ethanol.jl")
-include("ethane.jl")
-include("Stockmayer.jl")
-include("methanol.jl")
-include("methane.jl")
 include("LJ2.jl")
-end # module
+
+end # module PureEOS
